@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Probabilidad de Gol</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Calculadora de Probabilidad de Gol</h1>
+        <form id="bettingForm">
+            <label for="xgLocal">Goles Esperados (xG) Local:</label>
+            <input type="number" id="xgLocal" step="0.01" required>
+
+            <label for="xgVisitante">Goles Esperados (xG) Visitante:</label>
+            <input type="number" id="xgVisitante" step="0.01" required>
+
+            <label for="possession">Posesión del Balón (%):</label>
+            <input type="number" id="possession" step="0.1" required>
+            
+            <label for="shots">Remates:</label>
+            <input type="number" id="shots" required>
+            
+            <label for="shotsOnTarget">Remates a Puerta:</label>
+            <input type="number" id="shotsOnTarget" required>
+            
+            <label for="corners">Córners:</label>
+            <input type="number" id="corners" required>
+            
+            <label for="attacks">Ataques:</label>
+            <input type="number" id="attacks" required>
+            
+            <label for="dangerousAttacks">Ataques Peligrosos:</label>
+            <input type="number" id="dangerousAttacks" required>
+            
+            <label for="minute">Minuto de Juego:</label>
+            <input type="number" id="minute" required>
+            
+            <label for="odds">Cuota de la Casa de Apuestas:</label>
+            <input type="number" id="odds" step="0.01" required>
+            
+            <button type="submit">Calcular Probabilidad</button>
+        </form>
+        <div id="result"></div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
