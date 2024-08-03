@@ -2,44 +2,66 @@ document.getElementById('bettingForm').addEventListener('submit', function(e) {
     e.preventDefault();
 
     // Obtener los valores del formulario
-    let xgLocal = parseFloat(document.getElementById('xgLocal').value);
-    let xgVisitante = parseFloat(document.getElementById('xgVisitante').value);
-    let possession = parseFloat(document.getElementById('possession').value);
-    let shots = parseInt(document.getElementById('shots').value);
-    let shotsOnTarget = parseInt(document.getElementById('shotsOnTarget').value);
-    let corners = parseInt(document.getElementById('corners').value);
-    let attacks = parseInt(document.getElementById('attacks').value);
-    let dangerousAttacks = parseInt(document.getElementById('dangerousAttacks').value);
+    let possessionLocal = parseFloat(document.getElementById('possessionLocal').value);
+    let shotsLocal = parseInt(document.getElementById('shotsLocal').value);
+    let shotsOnTargetLocal = parseInt(document.getElementById('shotsOnTargetLocal').value);
+    let cornersLocal = parseInt(document.getElementById('cornersLocal').value);
+    let attacksLocal = parseInt(document.getElementById('attacksLocal').value);
+    let dangerousAttacksLocal = parseInt(document.getElementById('dangerousAttacksLocal').value);
+
+    let possessionVisitante = parseFloat(document.getElementById('possessionVisitante').value);
+    let shotsVisitante = parseInt(document.getElementById('shotsVisitante').value);
+    let shotsOnTargetVisitante = parseInt(document.getElementById('shotsOnTargetVisitante').value);
+    let cornersVisitante = parseInt(document.getElementById('cornersVisitante').value);
+    let attacksVisitante = parseInt(document.getElementById('attacksVisitante').value);
+    let dangerousAttacksVisitante = parseInt(document.getElementById('dangerousAttacksVisitante').value);
+
     let minute = parseInt(document.getElementById('minute').value);
     let odds = parseFloat(document.getElementById('odds').value);
+    let scoreLocal = parseInt(document.getElementById('scoreLocal').value);
+    let scoreVisitante = parseInt(document.getElementById('scoreVisitante').value);
 
     // Calcular la probabilidad implícita de la casa de apuestas
     let impliedProbability = (1 / odds) * 100;
 
-    // Ajustar los pesos para cada métrica basada en la importancia
-    let ourProbability = 0.25 * ((xgLocal + xgVisitante) / 2 / 3) +
-                         0.15 * (possession / 100) +
-                         0.15 * (shots / 30) +
-                         0.2 * (shotsOnTarget / 10) +
-                         0.1 * (corners / 10) +
-                         0.15 * (attacks / 150) +
-                         0.2 * (dangerousAttacks / 60);
+    // Calcular la probabilidad para el equipo local
+    let probabilityLocal = 0.2 * (possessionLocal / 100) +
+                           0.2 * (shotsLocal / 30) +
+                           0.25 * (shotsOnTargetLocal / 10) +
+                           0.15 * (cornersLocal / 10) +
+                           0.1 * (attacksLocal / 150) +
+                           0.3 * (dangerousAttacksLocal / 60);
 
-    // Ajustar la probabilidad basada en el minuto del juego
+    // Calcular la probabilidad para el equipo visitante
+    let probabilityVisitante = 0.2 * (possessionVisitante / 100) +
+                               0.2 * (shotsVisitante / 30) +
+                               0.25 * (shotsOnTargetVisitante / 10) +
+                               0.15 * (cornersVisitante / 10) +
+                               0.1 * (attacksVisitante / 150) +
+                               0.3 * (dangerousAttacksVisitante / 60);
+
+    // Ajustar las probabilidades basadas en el minuto del juego
     if (minute >= 65 && minute <= 75) {
-        ourProbability += 0.1; // Incrementar probabilidad por fase crítica del partido
+        probabilityLocal += 0.1; // Incrementar probabilidad por fase crítica del partido
+        probabilityVisitante += 0.1; // Incrementar probabilidad por fase crítica del partido
     }
 
-    ourProbability = ourProbability * 100; // Convertir a porcentaje
+    probabilityLocal = probabilityLocal * 100; // Convertir a porcentaje
+    probabilityVisitante = probabilityVisitante * 100; // Convertir a porcentaje
 
     // Comparar nuestra probabilidad con la probabilidad implícita
-    let recommendation = ourProbability > impliedProbability ? "Vale la pena apostar" : "Mejor busca otro partido";
+    let recommendationLocal = probabilityLocal > impliedProbability ? "Vale la pena apostar por el gol del equipo local" : "Mejor busca otro partido para el gol del equipo local";
+    let recommendationVisitante = probabilityVisitante > impliedProbability ? "Vale la pena apostar por el gol del equipo visitante" : "Mejor busca otro partido para el gol del equipo visitante";
 
     // Mostrar el resultado
     let resultDiv = document.getElementById('result');
     resultDiv.innerHTML = `
-        <p>Probabilidad de otro gol (nuestra estimación): ${ourProbability.toFixed(2)}%</p>
+        <p>Probabilidad de otro gol del equipo local (nuestra estimación): ${probabilityLocal.toFixed(2)}%</p>
         <p>Probabilidad implícita de la casa de apuestas: ${impliedProbability.toFixed(2)}%</p>
-        <p>${recommendation}</p>
+        <p>Recomendación: ${recommendationLocal}</p>
+        <br>
+        <p>Probabilidad de otro gol del equipo visitante (nuestra estimación): ${probabilityVisitante.toFixed(2)}%</p>
+        <p>Probabilidad implícita de la casa de apuestas: ${impliedProbability.toFixed(2)}%</p>
+        <p>Recomendación: ${recommendationVisitante}</p>
     `;
 });

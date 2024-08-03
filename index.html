@@ -3,47 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Probabilidad de Gol</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Sistema de Predicción de Apuestas</title>
 </head>
 <body>
-    <div class="container">
-        <h1>Calculadora de Probabilidad de Gol</h1>
-        <form id="bettingForm">
-            <label for="xgLocal">Goles Esperados (xG) Local:</label>
-            <input type="number" id="xgLocal" step="0.01" required>
+    <h1>Predicción de Apuestas en Vivo</h1>
+    <form id="bettingForm">
+        <h2>Equipo Local</h2>
+        <label for="possessionLocal">Posesión de balón (%):</label>
+        <input type="number" id="possessionLocal" name="possessionLocal" required><br>
 
-            <label for="xgVisitante">Goles Esperados (xG) Visitante:</label>
-            <input type="number" id="xgVisitante" step="0.01" required>
+        <label for="shotsLocal">Remates:</label>
+        <input type="number" id="shotsLocal" name="shotsLocal" required><br>
 
-            <label for="possession">Posesión del Balón (%):</label>
-            <input type="number" id="possession" step="0.1" required>
-            
-            <label for="shots">Remates:</label>
-            <input type="number" id="shots" required>
-            
-            <label for="shotsOnTarget">Remates a Puerta:</label>
-            <input type="number" id="shotsOnTarget" required>
-            
-            <label for="corners">Córners:</label>
-            <input type="number" id="corners" required>
-            
-            <label for="attacks">Ataques:</label>
-            <input type="number" id="attacks" required>
-            
-            <label for="dangerousAttacks">Ataques Peligrosos:</label>
-            <input type="number" id="dangerousAttacks" required>
-            
-            <label for="minute">Minuto de Juego:</label>
-            <input type="number" id="minute" required>
-            
-            <label for="odds">Cuota de la Casa de Apuestas:</label>
-            <input type="number" id="odds" step="0.01" required>
-            
-            <button type="submit">Calcular Probabilidad</button>
-        </form>
-        <div id="result"></div>
-    </div>
+        <label for="shotsOnTargetLocal">Remates a puerta:</label>
+        <input type="number" id="shotsOnTargetLocal" name="shotsOnTargetLocal" required><br>
+
+        <label for="cornersLocal">Córneres:</label>
+        <input type="number" id="cornersLocal" name="cornersLocal" required><br>
+
+        <label for="attacksLocal">Ataques:</label>
+        <input type="number" id="attacksLocal" name="attacksLocal" required><br>
+
+        <label for="dangerousAttacksLocal">Ataques peligrosos:</label>
+        <input type="number" id="dangerousAttacksLocal" name="dangerousAttacksLocal" required><br>
+
+        <h2>Equipo Visitante</h2>
+        <label for="possessionVisitante">Posesión de balón (%):</label>
+        <input type="number" id="possessionVisitante" name="possessionVisitante" required><br>
+
+        <label for="shotsVisitante">Remates:</label>
+        <input type="number" id="shotsVisitante" name="shotsVisitante" required><br>
+
+        <label for="shotsOnTargetVisitante">Remates a puerta:</label>
+        <input type="number" id="shotsOnTargetVisitante" name="shotsOnTargetVisitante" required><br>
+
+        <label for="cornersVisitante">Córneres:</label>
+        <input type="number" id="cornersVisitante" name="cornersVisitante" required><br>
+
+        <label for="attacksVisitante">Ataques:</label>
+        <input type="number" id="attacksVisitante" name="attacksVisitante" required><br>
+
+        <label for="dangerousAttacksVisitante">Ataques peligrosos:</label>
+        <input type="number" id="dangerousAttacksVisitante" name="dangerousAttacksVisitante" required><br>
+
+        <label for="minute">Minuto del juego:</label>
+        <input type="number" id="minute" name="minute" required><br>
+
+        <label for="odds">Cuota de la casa de apuestas:</label>
+        <input type="number" id="odds" name="odds" required><br>
+
+        <label for="scoreLocal">Marcador del equipo local:</label>
+        <input type="number" id="scoreLocal" name="scoreLocal" required><br>
+
+        <label for="scoreVisitante">Marcador del equipo visitante:</label>
+        <input type="number" id="scoreVisitante" name="scoreVisitante" required><br>
+
+        <button type="submit">Calcular Probabilidad</button>
+    </form>
+
+    <div id="result"></div>
+
     <script src="script.js"></script>
 </body>
 </html>
