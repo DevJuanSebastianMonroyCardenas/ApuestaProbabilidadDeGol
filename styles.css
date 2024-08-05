@@ -1,56 +1,51 @@
+/* Estilo base para el cuerpo del documento */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f2f2f2;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
+    font-family: Arial, sans-serif; /* Fuente del texto */
+    background-color: #f4f4f4; /* Color de fondo */
+    margin: 0; /* Margen */
+    padding: 0; /* Relleno */
 }
 
+/* Contenedor principal */
 .container {
-    background-color: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 300px;
+    max-width: 1200px; /* Ancho máximo del contenedor */
 }
 
+/* Estilo base para todas las tarjetas */
+.card {
+    background-color: #fff; /* Color de fondo */
+    padding: 20px; /* Relleno */
+    border-radius: 8px; /* Bordes redondeados */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra */
+    margin: 10px 0; /* Margen */
+}
+
+/* Estilo para el título principal */
 h1 {
-    text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 20px; /* Margen inferior */
 }
 
-form {
-    display: flex;
-    flex-direction: column;
+/* Estilo para los subtítulos */
+h2 {
+    color: #333; /* Color del texto */
 }
 
+/* Estilo para las etiquetas de los formularios */
 label {
-    margin-bottom: 5px;
+    color: #555; /* Color del texto */
 }
 
-input {
-    margin-bottom: 15px;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-
+/* Estilo para los botones */
 button {
-    padding: 10px;
-    border: none;
-    background-color: #28a745;
-    color: #fff;
-    border-radius: 4px;
-    cursor: pointer;
+    padding: 10px 20px; /* Relleno */
+    border: none; /* Sin borde */
+    border-radius: 4px; /* Bordes redondeados */
+    background-color: #5cb85c; /* Color de fondo */
+    color: white; /* Color del texto */
+    cursor: pointer; /* Cambia el cursor al pasar sobre el botón */
 }
 
+/* Estilo para el estado hover del botón */
 button:hover {
-    background-color: #218838;
-}
-
-#result {
-    margin-top: 20px;
-    text-align: center;
+    background-color: #4cae4c; /* Color de fondo al pasar sobre el botón */
 }

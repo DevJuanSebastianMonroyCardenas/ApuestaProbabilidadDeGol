@@ -3,47 +3,119 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Probabilidad de Gol</title>
+    <title>Sistema de Predicción de Apuestas</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
-        <h1>Calculadora de Probabilidad de Gol</h1>
-        <form id="bettingForm">
-            <label for="xgLocal">Goles Esperados (xG) Local:</label>
-            <input type="number" id="xgLocal" step="0.01" required>
+    <div class="container mt-4">
+        <h1 class="text-center">Predicción de Apuestas en Vivo</h1>
+        
+        <!-- Card para Datos Relevantes -->
+        <div class="card mb-3">
+            <div class="card-body">
+                <h2>Datos Relevantes</h2>
+                <div class="form-group">
+                    <label for="minute">Minuto del juego:</label>
+                    <input type="number" class="form-control" id="minute" name="minute" required>
+                </div>
+                <div class="form-group">
+                    <label for="odds">Cuota de la casa de apuestas:</label>
+                    <input type="number" class="form-control" id="odds" name="odds" required>
+                </div>
+                <div class="form-group">
+                    <label for="scoreLocal">Marcador del equipo local:</label>
+                    <input type="number" class="form-control" id="scoreLocal" name="scoreLocal" required>
+                </div>
+                <div class="form-group">
+                    <label for="scoreVisitante">Marcador del equipo visitante:</label>
+                    <input type="number" class="form-control" id="scoreVisitante" name="scoreVisitante" required>
+                </div>
+            </div>
+        </div>
 
-            <label for="xgVisitante">Goles Esperados (xG) Visitante:</label>
-            <input type="number" id="xgVisitante" step="0.01" required>
+        <!-- Card para Equipo Local y Equipo Visitante en una fila -->
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <h2>Equipo Local</h2>
+                        <div class="form-group">
+                            <label for="possessionLocal">Posesión de balón (%):</label>
+                            <input type="number" class="form-control" id="possessionLocal" name="possessionLocal" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="shotsLocal">Remates:</label>
+                            <input type="number" class="form-control" id="shotsLocal" name="shotsLocal" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="shotsOnTargetLocal">Remates a puerta:</label>
+                            <input type="number" class="form-control" id="shotsOnTargetLocal" name="shotsOnTargetLocal" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="cornersLocal">Córneres:</label>
+                            <input type="number" class="form-control" id="cornersLocal" name="cornersLocal" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="attacksLocal">Ataques:</label>
+                            <input type="number" class="form-control" id="attacksLocal" name="attacksLocal" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="dangerousAttacksLocal">Ataques peligrosos:</label>
+                            <input type="number" class="form-control" id="dangerousAttacksLocal" name="dangerousAttacksLocal" required>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <h2>Equipo Visitante</h2>
+                        <div class="form-group">
+                            <label for="possessionVisitante">Posesión de balón (%):</label>
+                            <input type="number" class="form-control" id="possessionVisitante" name="possessionVisitante" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="shotsVisitante">Remates:</label>
+                            <input type="number" class="form-control" id="shotsVisitante" name="shotsVisitante" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="shotsOnTargetVisitante">Remates a puerta:</label>
+                            <input type="number" class="form-control" id="shotsOnTargetVisitante" name="shotsOnTargetVisitante" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="cornersVisitante">Córneres:</label>
+                            <input type="number" class="form-control" id="cornersVisitante" name="cornersVisitante" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="attacksVisitante">Ataques:</label>
+                            <input type="number" class="form-control" id="attacksVisitante" name="attacksVisitante" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="dangerousAttacksVisitante">Ataques peligrosos:</label>
+                            <input type="number" class="form-control" id="dangerousAttacksVisitante" name="dangerousAttacksVisitante" required>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-            <label for="possession">Posesión del Balón (%):</label>
-            <input type="number" id="possession" step="0.1" required>
-            
-            <label for="shots">Remates:</label>
-            <input type="number" id="shots" required>
-            
-            <label for="shotsOnTarget">Remates a Puerta:</label>
-            <input type="number" id="shotsOnTarget" required>
-            
-            <label for="corners">Córners:</label>
-            <input type="number" id="corners" required>
-            
-            <label for="attacks">Ataques:</label>
-            <input type="number" id="attacks" required>
-            
-            <label for="dangerousAttacks">Ataques Peligrosos:</label>
-            <input type="number" id="dangerousAttacks" required>
-            
-            <label for="minute">Minuto de Juego:</label>
-            <input type="number" id="minute" required>
-            
-            <label for="odds">Cuota de la Casa de Apuestas:</label>
-            <input type="number" id="odds" step="0.01" required>
-            
-            <button type="submit">Calcular Probabilidad</button>
-        </form>
-        <div id="result"></div>
+        <!-- Card para Botón -->
+        <div class="card mb-3">
+            <div class="card-body text-center">
+                <button type="submit" class="btn btn-success btn-lg">Calcular Probabilidad</button>
+            </div>
+        </div>
+
+        <!-- Card para Resultado de Probabilidad -->
+        <div id="result" class="card mb-3">
+            <div class="card-body"></div>
+        </div>
     </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
