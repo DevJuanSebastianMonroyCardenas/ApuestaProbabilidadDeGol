@@ -54,24 +54,26 @@ document.querySelector('form').addEventListener('submit', function(e) {
         probabilityVisitante += 0.1;
     }
 
+    probabilityLocal = probabilityLocal * 100; // Convertir a porcentaje
+    probabilityVisitante = probabilityVisitante * 100; // Convertir a porcentaje
+
     // Calcular la probabilidad final de que haya otro gol
     let finalProbability = (probabilityLocal + probabilityVisitante) / 2;
 
     // Generar la recomendación de apuesta
-    let recommendation;
-    if (finalProbability > impliedProbability) {
-        recommendation = "Apuesta recomendada";
-    } else {
-        recommendation = "No apostar";
-    }
+    let recommendationLocal = probabilityLocal > impliedProbability ? "Vale la pena apostar por el gol del equipo local" : "Mejor busca otro partido para el gol del equipo local";
+    let recommendationVisitante = probabilityVisitante > impliedProbability ? "Vale la pena apostar por el gol del equipo visitante" : "Mejor busca otro partido para el gol del equipo visitante";
 
     // Mostrar el resultado
-    document.getElementById('result').innerHTML = `
+    let resultDiv = document.getElementById('result');
+    resultDiv.innerHTML = `
         <h2>Resultado de Probabilidad</h2>
         <p>Probabilidad implícita: ${impliedProbability.toFixed(2)}%</p>
         <p>Probabilidad de gol (equipo local): ${probabilityLocal.toFixed(2)}%</p>
         <p>Probabilidad de gol (equipo visitante): ${probabilityVisitante.toFixed(2)}%</p>
         <p>Probabilidad final de otro gol: ${finalProbability.toFixed(2)}%</p>
-        <h3>${recommendation}</h3>
+        <h3>Recomendaciones:</h3>
+        <p>${recommendationLocal}</p>
+        <p>${recommendationVisitante}</p>
     `;
 });
